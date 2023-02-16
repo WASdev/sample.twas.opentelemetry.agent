@@ -33,6 +33,12 @@
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.opentelemetry.instrumentation/opentelemetry-instrumentation-annotations -->
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-instrumentation-annotations</artifactId>
+            <version>1.22.1</version>
+        </dependency>
         <!-- For tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

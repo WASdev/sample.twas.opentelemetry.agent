@@ -11,22 +11,16 @@ services:
       - "9464:9464"
     environment:
       - OTEL_SERVICE_NAME=system
-      - OTEL_TRACES_EXPORTER=jaeger
-      - OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14250
-      - OTEL_METRICS_EXPORTER=prometheus
+      - OTEL_TRACES_EXPORTER=otlp
+      - OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=http://jaeger:4317
+      - OTEL_METRICS_EXPORTER=none
     depends_on:
       - "jaeger"
-      - "prometheus"
   jaeger:
     image: jaegertracing/all-in-one
     container_name: jaeger
     ports:
       - "6831:6831/udp"
       - "16686:16686"
-  prometheus:
-    image: docker.io/prom/prometheus
-    container_name: prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
