@@ -79,7 +79,7 @@ parms = "-appname System"
 parms += " -node " + node + " -server " + server
 parms += " -nouseMetaDataFromBinary"
 parms += " -usedefaultbindings"
-app = AdminApp.install("/work/app/twas-opentelemetry-jaeger-system.war", [parms])
+app = AdminApp.install("/work/app/twas-opentelemetry-agent-system.war", [parms])
 
 AdminTask.setGenericJVMArguments('[-nodeName ' + node + ' -serverName ' + server + ' -genericJvmArguments "-Xnoloa -javaagent:/work/app/opentelemetry-javaagent.jar"]')
 
